@@ -1,0 +1,57 @@
+# Validate the documentation site on every push to main and every PR.
+#
+# - build:  `mdbook build` fails if SUMMARY.md references a missing page, a page
+#           has a malformed header, or any generated Markdown does not compile.
+# - check:  verifies the committed version stamp, index pages, and generated
+#           module pages are consistent with one another.
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mdbook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+
+      - name: Build site
+        run: mdbook build
+
+  check:
+    name: check generated docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate generated layout
+        run: |
+          set -euo pipefail
+          VERSION="$(cat src/generated/version.txt)"
+          [[ "$VERSION" =~ ^v[0-9]+(\.[0-9]+)+$ ]] || { echo "::error::unexpected version stamp: $VERSION"; exit 1; }
+          test -f src/generated/modules.md || { echo "::error::missing src/generated/modules.md"; exit 1; }
+          test -f src/generated/classes.md || { echo "::error::missing src/generated/classes.md"; exit 1; }
+          test -f src/SUMMARY.md || { echo "::error::missing src/SUMMARY.md"; exit 1; }
+          # every SUMMARY chapter file must exist
+          while read -r page; do
+            [[ -z "$page" ]] && continue
+            [[ "$page" == -* ]] && continue
+            test -f "src/$page" || { echo "::error::SUMMARY references missing page src/$page"; exit 1; }
+          done < <(grep -E '^\s+- \[' src/SUMMARY.md | sed -E 's/^\s+- \[[^]]+\]\(([^)]+)\).*/\1/')
+          echo "generated docs layout OK (version $VERSION)"

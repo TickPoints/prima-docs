@@ -1,0 +1,5 @@
+/book/
+/target/
+prima-bin/
+*.log
+.DS_Store

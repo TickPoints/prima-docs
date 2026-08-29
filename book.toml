@@ -1,0 +1,15 @@
+[book]
+title = "Prima Standard Library Reference"
+description = "Auto-generated reference documentation for the Prima standard library (linalg, stats, io, plot, sys, time, num) and builtin value classes."
+authors = ["TickPoints"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+git-repository-url = "https://github.com/TickPoints/prima-docs"
+edit-url-template = "https://github.com/TickPoints/prima-docs/edit/main/{path}"
