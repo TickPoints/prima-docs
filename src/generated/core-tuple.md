@@ -4,7 +4,9 @@ The `Tuple` type and its method set (spec §4.4/§18.1).
 
 Method list and usage are maintained here; the `///` comments are the single source of truth
 and feed `prima doc` and diagnostic notes (spec §4.1/§16.4).
+
 An immutable, fixed-length sequence of values (spec §4.4).
+
 ## `class Tuple`
 
 - method `pub len(self) -> Integer` — The number of elements in `self`.

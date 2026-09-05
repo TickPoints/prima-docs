@@ -13,7 +13,9 @@ with f-string semantics); `from` is a keyword so it is not declared as a member 
 Naming/semantics notes: `split("")` returns the array of single characters (Python `list(s)`);
 `casefold` is a simplified lowercase (Python `casefold` also folds e.g. `ß` → `ss`);
 `is_digit` uses Unicode `Numeric` (Python `isdigit` excludes fractions).
+
 A UTF-8 string value (value-semantic copies; methods return new strings).
+
 ## `class String`
 
 - method `pub new() -> Self` — An empty string.

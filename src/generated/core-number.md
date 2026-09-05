@@ -7,7 +7,9 @@ and feed `prima doc` and diagnostic notes (spec §4.1/§16.4). The conversions a
 are the collapse family (spec §9.2–9.6) also available as free functions (`to_f64(x)`); the
 predicates/accessors (`is_integer`/`abs`/`numerator`/...) are numeric methods (spec §18.1).
 Numeric methods are native: they are the compute hotspots and mostly not expressible in `.pra`.
+
 A number in the exact tower `Integer < Rational < Real < Complex` or a fixed-width collapse.
+
 ## `class Number`
 
 - method `pub to_f32(self) -> F32` — Collapse to a 32-bit float (spec §9.2).

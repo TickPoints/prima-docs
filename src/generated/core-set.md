@@ -7,7 +7,9 @@ and feed `prima doc` and diagnostic notes (spec §4.1/§16.4). The method set fo
 Python 3 `set` methods, adapted to Prima naming. Read-only methods are native; mutating methods
 write back through the receiver binding (spec §11.6); `symmetric_difference` is layered
 (`@builtin(O2)`, spec §18.4) with a `.pra` fallback of the same semantics.
+
 A deduplicated collection of hashable elements (spec §11.6); mutating methods write back.
+
 ## `class Set`
 
 - method `pub len(self) -> Integer` — Returns the number of elements in `self`.

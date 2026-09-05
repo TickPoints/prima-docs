@@ -6,7 +6,9 @@ Method list and usage are maintained here; the `///` comments are the single sou
 and feed `prima doc` and diagnostic notes (spec §4.1/§16.4). `is_digit` is layered
 (`@builtin(O2)`, spec §18.4): its `.pra` fallback is `self.code() >= 48 && self.code() <= 57`,
 matching the native ASCII-digit predicate.
+
 A single Unicode scalar value (spec §4.6).
+
 ## `class Char`
 
 - method `pub len(self) -> Integer` — `1` (a char is one scalar value).

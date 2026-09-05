@@ -7,7 +7,9 @@ and feed `prima doc` and diagnostic notes (spec §4.1/§16.4). The method set fo
 Python 3 `dict` methods, adapted to Prima naming. Read-only methods are native; mutating methods
 write back through the receiver binding (spec §11.6); `copy` is layered (`@builtin(O2)`, spec
 §18.4) with a `.pra` fallback of the same semantics.
+
 An unordered key → value mapping with hashable keys (spec §11.6); mutating methods write back.
+
 ## `class Dict`
 
 - method `pub len(self) -> Integer` — Returns the number of entries in `self`.
