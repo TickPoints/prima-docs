@@ -23,6 +23,22 @@ Add a bar series with the given `x` positions and heights `y`.
 
 ## `pub fn bar(x: Array<F64>, y: Array<F64>, label: String)`
 
+Render the rectangular scalar grid `z` as a color-mapped heatmap over the current axes.
+Row 0 is drawn at the top; the finite value range is mapped linearly through a built-in
+blue-to-yellow colormap and non-finite cells are left blank. A colorbar is added to the figure.
+
+## `pub fn heatmap(z: Array<Array<F64>>, label: String)`
+
+Draw `levels` evenly spaced iso-lines across the rectangular scalar grid `z` (marching squares).
+`levels` must be at least 1; non-finite cells are skipped. A colorbar is added to the figure.
+
+## `pub fn contour(z: Array<Array<F64>>, levels: Integer, label: String)`
+
+Bin the finite values into `bins` equal-width bins and add the counts as a bar series.
+`bins` must be at least 1.
+
+## `pub fn hist(values: Array<F64>, bins: Integer, label: String)`
+
 Set the x-axis label.
 
 ## `pub fn xlabel(text: String)`

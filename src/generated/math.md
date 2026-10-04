@@ -1,0 +1,62 @@
+# Module `math`
+
+`math`: number-theory and polynomial numeric tools (spec §18.6).
+
+The `@builtin` declarations below are signature-only unless they carry a `.pra` fallback body;
+each binds to the Rust-hosted implementation registered under `math::<name>` (spec §18.4).
+Polynomial coefficients are `F64` arrays in **lowest-degree-first** order (index 0 is the
+constant term); the zero polynomial is the empty array.
+
+Greatest common divisor of `a` and `b` (same semantics as `num::gcd`).
+
+## `pub fn gcd(a: Integer, b: Integer) -> Integer`
+
+Least common multiple of `a` and `b` (same semantics as `num::lcm`).
+
+## `pub fn lcm(a: Integer, b: Integer) -> Integer`
+
+Prime factorization of `n` (`n > 0`), ascending with multiplicity; `n <= 0` errors.
+
+## `pub fn factor(n: Integer) -> Array<Integer>`
+
+All primes `<= limit` (empty when `limit < 2`): a layered `@builtin(O1)` (spec §18.4); a Rust
+sieve runs at `opt_level >= O1`, otherwise this trial-division `.pra` fallback with the same
+result is used.
+
+## `pub fn primes(limit: Integer) -> Array<Integer>`
+
+Chinese remainder theorem: the least non-negative `x` with `x ≡ residues[i] (mod moduli[i])`.
+Failures (length mismatch, zero modulus, non-pairwise-coprime moduli) are returned as `Err`.
+
+## `pub fn crt(residues: Array<Integer>, moduli: Array<Integer>) -> Result<Integer, String>`
+
+`base^exp mod modulus` by fast exponentiation; `exp >= 0` and `modulus != 0` are required.
+
+## `pub fn mod_pow(base: Integer, exp: Integer, modulus: Integer) -> Integer`
+
+Evaluate the polynomial `coeffs` at `x` (Horner); the empty polynomial evaluates to `0`.
+
+## `pub fn poly_eval(coeffs: Array<F64>, x: F64) -> F64`
+
+Sum of the polynomials `a` and `b`.
+
+## `pub fn poly_add(a: Array<F64>, b: Array<F64>) -> Array<F64>`
+
+Product of the polynomials `a` and `b` (empty when either factor is the zero polynomial).
+
+## `pub fn poly_mul(a: Array<F64>, b: Array<F64>) -> Array<F64>`
+
+Formal derivative of the polynomial `a` (empty for a constant polynomial).
+
+## `pub fn poly_derivative(a: Array<F64>) -> Array<F64>`
+
+Numeric complex roots of `a` via Durand–Kerner: high-degree zero coefficients are stripped and
+a degree-0 polynomial has no roots (empty result).
+
+## `pub fn poly_roots(a: Array<F64>) -> Array<Complex>`
+
+The first `n` terms of the simple continued fraction of `x` (`n >= 1`); the expansion stops
+early when it terminates exactly.
+
+## `pub fn continued_fraction(x: F64, n: Integer) -> Array<Integer>`
+
