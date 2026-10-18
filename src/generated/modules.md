@@ -8,6 +8,7 @@ The pages under this index are **auto-generated** from the embedded stdlib
 | [`io`](./io.md) | `io`: file and data-format helpers (spec §18.4). |
 | [`linalg`](./linalg.md) | `linalg`: dense matrix operations (spec §18.4). |
 | [`math`](./math.md) | `math`: number-theory and polynomial numeric tools (spec §18.6). |
+| [`mem`](./mem.md) | The `mem` module (spec §12.3/§12.4): explicit reference counting. |
 | [`num`](./num.md) | `num`: number-theory and radix helpers (spec §18.4). |
 | [`physics`](./physics.md) | `physics`: CODATA 2022 constants, elementary physics formulas, and `Vector3` (spec §7.3 / §18.6). |
 | [`plot`](./plot.md) | `plot`: 2D plotting helpers (spec §18.4). |

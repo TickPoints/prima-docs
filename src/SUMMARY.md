@@ -5,6 +5,7 @@
   - [`io`](./generated/io.md)
   - [`linalg`](./generated/linalg.md)
   - [`math`](./generated/math.md)
+  - [`mem`](./generated/mem.md)
   - [`num`](./generated/num.md)
   - [`physics`](./generated/physics.md)
   - [`plot`](./generated/plot.md)
