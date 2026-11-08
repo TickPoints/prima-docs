@@ -12,6 +12,11 @@ LaTeX `String`. Errors are returned as `Err` (e.g. unparseable LaTeX).
 
 ## `pub fn to_svg(expr: Value) -> Result<String, String>`
 
+Render `expr` as PNG bytes in an array without writing a file. Accepts a symbolic expression
+or a LaTeX `String`; rendering errors are returned as `Err`.
+
+## `pub fn to_png(expr: Value) -> Result<Array<Integer>, String>`
+
 Render `expr` as Unicode terminal math text. `expr` may be a symbolic expression or a LaTeX
 `String`.
 

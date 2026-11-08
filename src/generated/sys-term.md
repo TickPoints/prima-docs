@@ -14,3 +14,13 @@ Whether stdout is a terminal.
 
 ## `pub fn is_tty() -> Bool`
 
+Enable or disable raw mode. Repeated calls with the same value have no effect.
+Explicitly disable raw mode to restore the terminal; it is not restored automatically.
+Returns an error if the terminal mode cannot be changed.
+
+## `pub fn raw_mode(enable: Bool) -> Result<Nil, String>`
+
+Whether raw mode was enabled successfully and has not yet been disabled.
+
+## `pub fn is_raw() -> Bool`
+

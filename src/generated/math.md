@@ -7,6 +7,10 @@ each binds to the Rust-hosted implementation registered under `math::<name>` (sp
 Polynomial coefficients are `F64` arrays in **lowest-degree-first** order (index 0 is the
 constant term); the zero polynomial is the empty array.
 
+Taylor polynomial of `f` in `x` about `x0`, through nonnegative integer order `n`.
+
+## `pub fn taylor(f: Value, x: Value, x0: Value, n: Integer) -> Value`
+
 Greatest common divisor of `a` and `b` (same semantics as `num::gcd`).
 
 ## `pub fn gcd(a: Integer, b: Integer) -> Integer`
